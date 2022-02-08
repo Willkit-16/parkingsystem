@@ -18,10 +18,11 @@ public class FareCalculatorService {
 		// double duration = outHour - inHour;
 		Date tickIn = ticket.getInTime();
 		Date tickOut = ticket.getOutTime();
+
 		double discount = 0;
 		String vehicleRegNumber = ticket.getVehicleRegNumber();
-		int mod = ticketDAO.getNumberOfTickets(vehicleRegNumber);
-		if (mod >= 2) {
+		boolean mod = ticketDAO.getNumberOfTickets(vehicleRegNumber);
+		if (mod) {
 			discount = 0.95;
 			System.out.println("Thank you for your fidelity, -5% !");
 		} else {

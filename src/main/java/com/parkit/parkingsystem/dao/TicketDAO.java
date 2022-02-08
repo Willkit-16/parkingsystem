@@ -70,17 +70,20 @@ public class TicketDAO {
 		}
 	}
 
-	public int getNumberOfTickets(String vehicleRegNumber) {
+	public boolean getNumberOfTickets(String vehicleRegNumber) {
 		Connection con = null;
-		int count = 0;
+		boolean count = false;
 		try {
 			con = dataBaseConfig.getConnection();
 			PreparedStatement ps = con.prepareStatement(DBConstants.GET_TICKETS);
 			// ID, PARKING_NUMBER, VEHICLE_REG_NUMBER, PRICE, IN_TIME, OUT_TIME)
 			ps.setString(1, vehicleRegNumber);
+			System.out.println(ps);
 			ResultSet rs = ps.executeQuery();
+			System.out.println(rs);
 			if (rs.next()) {
-				count = rs.getInt(1);
+				count = true;
+				System.out.println(rs.getInt(1));
 			}
 			dataBaseConfig.closeResultSet(rs);
 			dataBaseConfig.closePreparedStatement(ps);
