@@ -2,6 +2,7 @@ package com.parkit.parkingsystem;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.when;
 
 import java.util.Date;
 
@@ -199,7 +200,7 @@ public class FareCalculatorServiceTest {
 		ticket.setParkingSpot(parkingSpot);
 		ticket.setVehicleRegNumber(vehicleRegNumber);
 
-		// when(ticketDAO.getNumberOfTickets(vehicleRegNumber)).thenReturn(2);
+		when(ticketDAO.getNumberOfTickets(vehicleRegNumber)).thenReturn(true);
 
 		fareCalculatorService.calculateFare(ticket);
 

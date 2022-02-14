@@ -20,6 +20,31 @@ public class TicketDAO {
 
 	public DataBaseConfig dataBaseConfig = new DataBaseConfig();
 
+	/**
+	 * Constructor.
+	 */
+	public TicketDAO() {
+		dataBaseConfig = new DataBaseConfig();
+	}
+
+	/**
+	 * Get the database configuration.
+	 *
+	 * @return DataBaseConfig
+	 */
+	public DataBaseConfig getDataBaseConfig() {
+		return dataBaseConfig;
+	}
+
+	/**
+	 * Set the database configuration.
+	 *
+	 * @param dbConfig
+	 */
+	public void setDataBaseConfig(final DataBaseConfig dbConfig) {
+		this.dataBaseConfig = dbConfig;
+	}
+
 	public boolean saveTicket(Ticket ticket) {
 		Connection con = null;
 		try {
