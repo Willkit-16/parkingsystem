@@ -1,14 +1,10 @@
 package com.parkit.parkingsystem.dao;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.mockito.Mockito.doThrow;
-
-import java.io.IOException;
-import java.sql.SQLException;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -30,10 +26,10 @@ class TicketDAOTest {
 		ticketDAO = new TicketDAO();
 	}
 
-	@BeforeEach
-	private void setUpPerTest() throws ClassNotFoundException, SQLException, IOException {
-		doThrow(ClassNotFoundException.class).when(dataBaseConfig).getConnection();
-		ticketDAO.setDataBaseConfig(dataBaseConfig);
+	@Test
+	public void getTicketTest() {
+		ticketDAO.getTicket("ABCDEF");
+		assertNotNull(ticketDAO.getTicket("ABCDEF"));
 	}
 
 	@Test
@@ -43,7 +39,7 @@ class TicketDAOTest {
 
 	@Test
 	public void getTicketWithErrorConnection() {
-		assertNull(ticketDAO.getTicket("ABCDEF"));
+		assertNull(ticketDAO.getTicket("ABBBBBB"));
 	}
 
 	@Test

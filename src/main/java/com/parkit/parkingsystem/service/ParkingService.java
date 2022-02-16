@@ -1,6 +1,5 @@
 package com.parkit.parkingsystem.service;
 
-import java.time.Clock;
 import java.util.Date;
 
 import org.apache.logging.log4j.LogManager;
@@ -22,8 +21,6 @@ public class ParkingService {
 	private InputReaderUtil inputReaderUtil;
 	private ParkingSpotDAO parkingSpotDAO;
 	private TicketDAO ticketDAO;
-
-	private Clock clock;
 
 	public ParkingService(InputReaderUtil inputReaderUtil, ParkingSpotDAO parkingSpotDAO, TicketDAO ticketDAO) {
 		this.inputReaderUtil = inputReaderUtil;
@@ -53,10 +50,6 @@ public class ParkingService {
 				System.out.println("Generated Ticket and saved in DB");
 				System.out.println("Please park your vehicle in spot number:" + parkingSpot.getId());
 				System.out.println("Recorded in-time for vehicle number:" + vehicleRegNumber + " is:" + inTime);
-
-				if (ticketDAO.getNumberOfTickets(vehicleRegNumber)) {
-					System.out.println("Hello, nice to see you again !");
-				}
 			}
 		} catch (Exception e) {
 			logger.error("Unable to process incoming vehicle", e);
@@ -126,9 +119,5 @@ public class ParkingService {
 		} catch (Exception e) {
 			logger.error("Unable to process exiting vehicle", e);
 		}
-	}
-
-	public void setClock(Clock clock) {
-		this.clock = clock;
 	}
 }

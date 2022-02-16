@@ -27,6 +27,7 @@ public class FareCalculatorService {
 			System.out.println("Thank you for your fidelity, -5% !");
 		} else {
 			discount = 1;
+			System.out.println("yeah");
 		}
 
 		double diff = tickOut.getTime() - tickIn.getTime();

@@ -2,7 +2,6 @@ package com.parkit.parkingsystem;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.when;
 
 import java.util.Date;
 
@@ -27,7 +26,7 @@ public class FareCalculatorServiceTest {
 	private Ticket ticket;
 
 	private ParkingSpot parkingSpot;
-	private String vehicleRegNumber = "ABCDEF";
+	private String vehicleRegNumber;
 
 	@Mock
 	private static TicketDAO ticketDAO;
@@ -198,19 +197,32 @@ public class FareCalculatorServiceTest {
 		ticket.setInTime(inTime);
 		ticket.setOutTime(outTime);
 		ticket.setParkingSpot(parkingSpot);
-		ticket.setVehicleRegNumber(vehicleRegNumber);
-
-		when(ticketDAO.getNumberOfTickets(vehicleRegNumber)).thenReturn(true);
+		ticket.setVehicleRegNumber("ABCDEF");
 
 		fareCalculatorService.calculateFare(ticket);
 
 		assertEquals((0.95 * Fare.CAR_RATE_PER_HOUR), ticket.getPrice());
+		System.out.println(Fare.CAR_RATE_PER_HOUR);
 
 	}
 
 	@Test
 	public void calculateDiscountBikeParkingOverThirtyMinutes() {
 
+		Date inTime = new Date();
+		inTime.setTime(System.currentTimeMillis() - (60 * 60 * 1000));// 60 minutes / 1 hour parking time should give
+		Date outTime = new Date();
+		parkingSpot = new ParkingSpot(2, ParkingType.BIKE, false);
+
+		ticket.setInTime(inTime);
+		ticket.setOutTime(outTime);
+		ticket.setParkingSpot(parkingSpot);
+		ticket.setVehicleRegNumber("AAA");
+
+		fareCalculatorService.calculateFare(ticket);
+
+		assertEquals((0.95 * Fare.BIKE_RATE_PER_HOUR), ticket.getPrice());
+		System.out.println(Fare.BIKE_RATE_PER_HOUR);
 	}
 
 }
