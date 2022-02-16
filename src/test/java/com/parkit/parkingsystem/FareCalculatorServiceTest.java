@@ -26,7 +26,6 @@ public class FareCalculatorServiceTest {
 	private Ticket ticket;
 
 	private ParkingSpot parkingSpot;
-	private String vehicleRegNumber;
 
 	@Mock
 	private static TicketDAO ticketDAO;
@@ -39,7 +38,6 @@ public class FareCalculatorServiceTest {
 	@BeforeEach
 	private void setUpPerTest() {
 		ticket = new Ticket();
-		ticket.setVehicleRegNumber(vehicleRegNumber);
 		ticketDAO.saveTicket(ticket);
 	}
 

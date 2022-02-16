@@ -68,8 +68,6 @@ public class FareCalculatorService {
 			}
 		}
 
-		// diff -= duration * (60 * 60 * 1000);
-
 		System.out.println("Valeur du In : " + tickIn);
 		System.out.println("Valeur du Out : " + tickOut);
 		System.out.println("Out - In = " + duration);

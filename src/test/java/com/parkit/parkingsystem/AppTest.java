@@ -18,7 +18,4 @@ public class AppTest {
 		assertNotNull(App.class);
 	}
 
-	/**
-	 * @Test public void maintTest() { App.main(new String[] {}); }
-	 */
 }

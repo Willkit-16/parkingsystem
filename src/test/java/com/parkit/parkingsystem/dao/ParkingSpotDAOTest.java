@@ -30,9 +30,7 @@ public class ParkingSpotDAOTest {
 
 	@Test
 	public void getNextAvailableSlotTest() {
-
 		assertNotNull(parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR));
-
 		assertEquals(2, parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR));
 	}
 
@@ -44,7 +42,6 @@ public class ParkingSpotDAOTest {
 	@Test
 	public void updateParkingTest() {
 		ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
-
 		assertTrue(parkingSpotDAO.updateParking(parkingSpot));
 	}
 }
