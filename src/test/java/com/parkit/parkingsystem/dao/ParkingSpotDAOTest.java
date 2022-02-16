@@ -11,8 +11,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.parkit.parkingsystem.config.DataBaseConfig;
 import com.parkit.parkingsystem.constants.ParkingType;
+import com.parkit.parkingsystem.integration.config.DataBaseTestConfig;
 import com.parkit.parkingsystem.model.ParkingSpot;
 
 @ExtendWith(MockitoExtension.class)
@@ -21,7 +21,7 @@ public class ParkingSpotDAOTest {
 	private static ParkingSpotDAO parkingSpotDAO;
 
 	@Mock
-	private static DataBaseConfig dataBaseConfig;
+	private static DataBaseTestConfig dataBaseTestConfig;
 
 	@BeforeAll
 	private static void setUp() {

@@ -10,7 +10,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.parkit.parkingsystem.config.DataBaseConfig;
+import com.parkit.parkingsystem.integration.config.DataBaseTestConfig;
 import com.parkit.parkingsystem.model.Ticket;
 
 @ExtendWith(MockitoExtension.class)
@@ -19,7 +19,7 @@ class TicketDAOTest {
 	private static TicketDAO ticketDAO;
 
 	@Mock
-	private static DataBaseConfig dataBaseConfig;
+	private static DataBaseTestConfig dataBaseTestConfig;
 
 	@BeforeAll
 	private static void setUp() {
