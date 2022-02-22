@@ -14,12 +14,23 @@ import com.parkit.parkingsystem.constants.ParkingType;
 import com.parkit.parkingsystem.model.ParkingSpot;
 import com.parkit.parkingsystem.model.Ticket;
 
+/**
+ * The Class TicketDAO.
+ */
 public class TicketDAO {
 
+	/** The Constant logger. */
 	private static final Logger logger = LogManager.getLogger("TicketDAO");
 
+	/** The data base config. */
 	public DataBaseConfig dataBaseConfig = new DataBaseConfig();
 
+	/**
+	 * Save ticket.
+	 *
+	 * @param ticket the ticket
+	 * @return true, if successful
+	 */
 	public boolean saveTicket(Ticket ticket) {
 		Connection con = null;
 		try {
@@ -41,6 +52,12 @@ public class TicketDAO {
 		}
 	}
 
+	/**
+	 * Gets the ticket.
+	 *
+	 * @param vehicleRegNumber the vehicle reg number
+	 * @return the ticket
+	 */
 	public Ticket getTicket(String vehicleRegNumber) {
 		Connection con = null;
 		Ticket ticket = null;
@@ -70,6 +87,12 @@ public class TicketDAO {
 		}
 	}
 
+	/**
+	 * Gets the number of tickets.
+	 *
+	 * @param vehicleRegNumber the vehicle reg number
+	 * @return the number of tickets
+	 */
 	public boolean getNumberOfTickets(String vehicleRegNumber) {
 		Connection con = null;
 		boolean count = false;
@@ -94,6 +117,12 @@ public class TicketDAO {
 		}
 	}
 
+	/**
+	 * Update ticket.
+	 *
+	 * @param ticket the ticket
+	 * @return true, if successful
+	 */
 	public boolean updateTicket(Ticket ticket) {
 		Connection con = null;
 		try {

@@ -6,8 +6,16 @@ import com.parkit.parkingsystem.constants.Fare;
 import com.parkit.parkingsystem.dao.TicketDAO;
 import com.parkit.parkingsystem.model.Ticket;
 
+/**
+ * The Class FareCalculatorService.
+ */
 public class FareCalculatorService {
 
+	/**
+	 * Calculate fare.
+	 *
+	 * @param ticket the ticket
+	 */
 	public void calculateFare(Ticket ticket) {
 		if ((ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime()))) {
 			throw new IllegalArgumentException("Out time provided is incorrect:" + ticket.getOutTime().toString());
@@ -15,7 +23,6 @@ public class FareCalculatorService {
 
 		TicketDAO ticketDAO = new TicketDAO();
 		// TODO: Some tests are failing here. Need to check if this logic is correct
-		// double duration = outHour - inHour;
 		Date tickIn = ticket.getInTime();
 		Date tickOut = ticket.getOutTime();
 

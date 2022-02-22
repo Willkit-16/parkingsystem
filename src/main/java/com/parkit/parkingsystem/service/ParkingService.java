@@ -12,22 +12,42 @@ import com.parkit.parkingsystem.model.ParkingSpot;
 import com.parkit.parkingsystem.model.Ticket;
 import com.parkit.parkingsystem.util.InputReaderUtil;
 
+/**
+ * The Class ParkingService.
+ */
 public class ParkingService {
 
+	/** The Constant logger. */
 	private static final Logger logger = LogManager.getLogger("ParkingService");
 
+	/** The fare calculator service. */
 	private static FareCalculatorService fareCalculatorService = new FareCalculatorService();
 
+	/** The input reader util. */
 	private InputReaderUtil inputReaderUtil;
+
+	/** The parking spot DAO. */
 	private ParkingSpotDAO parkingSpotDAO;
+
+	/** The ticket DAO. */
 	private TicketDAO ticketDAO;
 
+	/**
+	 * Instantiates a new parking service.
+	 *
+	 * @param inputReaderUtil the input reader util
+	 * @param parkingSpotDAO  the parking spot DAO
+	 * @param ticketDAO       the ticket DAO
+	 */
 	public ParkingService(InputReaderUtil inputReaderUtil, ParkingSpotDAO parkingSpotDAO, TicketDAO ticketDAO) {
 		this.inputReaderUtil = inputReaderUtil;
 		this.parkingSpotDAO = parkingSpotDAO;
 		this.ticketDAO = ticketDAO;
 	}
 
+	/**
+	 * Process incoming vehicle.
+	 */
 	public void processIncomingVehicle() {
 		try {
 			ParkingSpot parkingSpot = getNextParkingNumberIfAvailable();
@@ -56,11 +76,22 @@ public class ParkingService {
 		}
 	}
 
+	/**
+	 * Gets the vehicle reg number.
+	 *
+	 * @return the vehicle reg number
+	 * @throws Exception the exception
+	 */
 	private String getVehicleRegNumber() throws Exception {
 		System.out.println("Please type the vehicle registration number and press enter key");
 		return inputReaderUtil.readVehicleRegistrationNumber();
 	}
 
+	/**
+	 * Gets the next parking number if available.
+	 *
+	 * @return the next parking number if available
+	 */
 	public ParkingSpot getNextParkingNumberIfAvailable() {
 		int parkingNumber = 0;
 		ParkingSpot parkingSpot = null;
@@ -80,6 +111,11 @@ public class ParkingService {
 		return parkingSpot;
 	}
 
+	/**
+	 * Gets the vehicle type.
+	 *
+	 * @return the vehicle type
+	 */
 	private ParkingType getVehicleType() {
 		System.out.println("Please select vehicle type from menu");
 		System.out.println("1 CAR");
@@ -99,6 +135,9 @@ public class ParkingService {
 		}
 	}
 
+	/**
+	 * Process exiting vehicle.
+	 */
 	public void processExitingVehicle() {
 		try {
 			String vehicleRegNumber = getVehicleRegNumber();
