@@ -38,7 +38,7 @@ class TicketDAOTest {
 	}
 
 	@Test
-	public void getTicketWithErrorConnection() {
+	public void getTicketWithErrorReg() {
 		assertNull(ticketDAO.getTicket("ABBBBBB"));
 	}
 
@@ -47,8 +47,4 @@ class TicketDAOTest {
 		assertFalse(ticketDAO.updateTicket(new Ticket()));
 	}
 
-	@Test
-	public void updateTicketInTimeWithErrorConnection() {
-		assertFalse(ticketDAO.updateTicket(new Ticket()));
-	}
 }

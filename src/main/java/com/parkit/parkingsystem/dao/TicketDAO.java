@@ -83,7 +83,6 @@ public class TicketDAO {
 			System.out.println(rs);
 			if (rs.next()) {
 				count = true;
-				System.out.println(rs.getInt(1));
 			}
 			dataBaseConfig.closeResultSet(rs);
 			dataBaseConfig.closePreparedStatement(ps);
