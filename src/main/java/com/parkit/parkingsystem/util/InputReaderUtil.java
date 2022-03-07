@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 public class InputReaderUtil {
 
 	/** The scan. */
-	private static Scanner scan = new Scanner(System.in);
+	private static Scanner scan = new Scanner(System.in, "UTF-8");
 
 	/** The Constant logger. */
 	private static final Logger logger = LogManager.getLogger("InputReaderUtil");

@@ -11,7 +11,7 @@ public class Ticket {
 	private int id;
 
 	/** The parking spot. */
-	private ParkingSpot parkingSpot;
+	public ParkingSpot parkingSpot;
 
 	/** The vehicle reg number. */
 	private String vehicleRegNumber;
@@ -98,21 +98,19 @@ public class Ticket {
 	}
 
 	/**
-	 * Gets the in time.
 	 *
-	 * @return the in time
+	 * @return the inTime
 	 */
 	public Date getInTime() {
-		return inTime;
+		return inTime != null ? new Date(inTime.getTime()) : null;
 	}
 
 	/**
-	 * Sets the in time.
 	 *
-	 * @param inTime the new in time
+	 * @param aInTime
 	 */
-	public void setInTime(Date inTime) {
-		this.inTime = inTime;
+	public void setInTime(final Date aInTime) {
+		this.inTime = aInTime != null ? new Date(aInTime.getTime()) : null;
 	}
 
 	/**
@@ -121,7 +119,7 @@ public class Ticket {
 	 * @return the out time
 	 */
 	public Date getOutTime() {
-		return outTime;
+		return outTime != null ? new Date(outTime.getTime()) : null;
 	}
 
 	/**
@@ -129,7 +127,7 @@ public class Ticket {
 	 *
 	 * @param outTime the new out time
 	 */
-	public void setOutTime(Date outTime) {
-		this.outTime = outTime;
+	public void setOutTime(final Date aOutTime) {
+		this.outTime = aOutTime != null ? new Date(aOutTime.getTime()) : null;
 	}
 }

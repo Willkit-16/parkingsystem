@@ -1,6 +1,5 @@
 package com.parkit.parkingsystem.dao;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -11,7 +10,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.parkit.parkingsystem.integration.config.DataBaseTestConfig;
-import com.parkit.parkingsystem.model.Ticket;
 
 @ExtendWith(MockitoExtension.class)
 class TicketDAOTest {
@@ -33,18 +31,8 @@ class TicketDAOTest {
 	}
 
 	@Test
-	public void saveTicketWithErrorConnection() {
-		assertFalse(ticketDAO.saveTicket(new Ticket()));
-	}
-
-	@Test
 	public void getTicketWithErrorReg() {
 		assertNull(ticketDAO.getTicket("ABBBBBB"));
-	}
-
-	@Test
-	public void updateTicketWithErrorConnection() {
-		assertFalse(ticketDAO.updateTicket(new Ticket()));
 	}
 
 }

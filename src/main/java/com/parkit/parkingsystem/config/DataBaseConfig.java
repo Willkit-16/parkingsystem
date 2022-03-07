@@ -1,10 +1,13 @@
 package com.parkit.parkingsystem.config;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,13 +26,34 @@ public class DataBaseConfig {
 	 * @return the connection
 	 * @throws ClassNotFoundException the class not found exception
 	 * @throws SQLException           the SQL exception
+	 * @throws IOException
 	 */
-	public Connection getConnection() throws ClassNotFoundException, SQLException {
+	public Connection getConnection() throws ClassNotFoundException, SQLException, IOException {
 		logger.info("Create DB connection");
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		return DriverManager.getConnection(
-				"jdbc:mysql://localhost:3306/prod?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-				"root", "rootroot");
+
+		Properties props = new Properties();
+		FileInputStream in = null;
+		try {
+			in = new FileInputStream("src/main/resources/connexion.properties");
+			props.load(in);
+		} catch (IOException e) {
+			System.out.println("Error connexion");
+		} finally {
+			if (in != null) {
+				in.close();
+			}
+		}
+
+		String driver = props.getProperty("jdbc.driver");
+		if (driver != null) {
+			Class.forName(driver);
+		}
+
+		String url = props.getProperty("jdbc.url");
+		String username = props.getProperty("jdbc.username");
+		String password = props.getProperty("jdbc.password");
+
+		return DriverManager.getConnection(url, username, password);
 	}
 
 	/**
