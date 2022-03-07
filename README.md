@@ -48,7 +48,7 @@ To run the tests from maven, go to the folder that contains the pom.xml file and
 
 `mvn test`
 
-V1.0.0
+V1.0.1
 
 # Author
 
