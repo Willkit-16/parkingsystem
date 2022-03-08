@@ -22,7 +22,6 @@ public class FareCalculatorService {
 		}
 
 		TicketDAO ticketDAO = new TicketDAO();
-		// TODO: Some tests are failing here. Need to check if this logic is correct
 		Date tickIn = ticket.getInTime();
 		Date tickOut = ticket.getOutTime();
 
